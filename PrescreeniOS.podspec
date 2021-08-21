@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'northanapon' => 'nor.thanapon@gmail.com' }
-  s.source           = { :http => 'https://github.com/InDistinct-Studio/prescreen-ios-pod/releases/download/v0.0.1-alpha/PrescreeniOS.zip' }
+  s.source           = { :http => 'https://github.com/InDistinct-Studio/prescreen-ios-pod/releases/download/0.0.2/PrescreeniOS.zip' }
 #  s.source           = { :git => 'https://github.com/InDistinct-Studio/prescreen-ios-pod.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
