@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 
     // MARK: - Helper methods
     private func configure() {
-        captureSession.sessionPreset = AVCaptureSession.Preset.high
+        captureSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTelephotoCamera,.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
         
@@ -83,12 +83,12 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             if result.error != nil {
                 print(result.error!)
             }
-            if result.texts != nil {
-                print("OCR: \(result.confidence)")
-                print(result.texts!)
-            }
-            if result.detectionResult != nil {
-                print("ML: \(result.detectionResult!.mlConfidence), BOX: \(result.detectionResult!.boxConfidence)")
+            else if (result.confidence >= 0.5) {
+                print("Confidence: \(result.confidence)")
+                print("Front side: \(result.isFrontSide)")
+                if (result.texts != nil) {
+                    print(result.texts!)
+                }
             }
             // Handle result here
         }

@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '12.1'
 
 target 'PrescreeniOS_Example' do
-  pod 'PrescreeniOS'
+  pod 'PrescreeniOS', '2.0.0'
 
   target 'PrescreeniOS_Tests' do
     inherit! :search_paths
