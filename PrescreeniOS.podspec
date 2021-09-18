@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PrescreeniOS'
-  s.version          = '2.0.0'
+  s.version          = '2.1.5'
   s.summary          = 'PrescreeniOS detect and verify Thai national ID cards.'
   s.description      = <<-DESC
   'PrescreeniOS detect and verify Thai national ID cards. It works for both realtime input (camera feed) or an image.'
@@ -18,20 +18,13 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'northanapon' => 'nor.thanapon@gmail.com' }
-  s.source           = { :http => 'https://github.com/Seen-Digital/prescreen-ios-pod/releases/download/v2.0.0/PrescreeniOS-v2.0.0.zip' }
-#  s.source           = { :git => 'https://github.com/InDistinct-Studio/prescreen-ios-pod.git', :tag => s.version.to_s }
+  s.source           = { :http => 'https://github.com/Seen-Digital/prescreen-ios-pod/releases/download/v2.1.5/PrescreeniOS-2.1.5.zip' }
+  s.swift_versions = '5.0'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '12.1'
-  s.ios.vendored_frameworks = 'PrescreeniOS.framework'
-  # s.resource_bundles = {
-  #   'PrescreeniOS' => ['PrescreeniOS/Assets/*.png']
-  # }
+  s.ios.deployment_target = '11.0'
+  s.ios.vendored_frameworks = 'PrescreeniOS.xcframework'
   s.resources = 'PrescreeniOS.bundle'
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
   s.static_framework = true
   s.dependency 'GoogleMLKit/TextRecognition'
   s.dependency 'GoogleMLKit/ObjectDetectionCustom'
