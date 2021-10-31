@@ -51,7 +51,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
     public var croppedImage: UIImage?
     public var isFrontCardFull: Bool?
     public var classificationResult: IDCardClassificationResult?
-}
+  }
   ```
 
   - `error`: If the recognition is successful, the `error` will be null. In case of unsuccessful scan, the `error.errorMessage` will contain the problem of the recognition.
@@ -68,7 +68,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
   - `isFrontCardFul`: A boolean flag indicates whether the scan found the front side and the image is likely to have a full card (assuming that the card is in the correct orientation).
   - `classificationResult`: A result of a machine learning card labeling:
     - `mlConfidence`: A float between 0.0 to 1.0 (higher values mean more likely to be an ID card).
-    - 'error': A string of an error message, `nil` means no error.
+    - `error`: A string of an error message, `nil` means no error.
+
 
 ### Full Example
 
