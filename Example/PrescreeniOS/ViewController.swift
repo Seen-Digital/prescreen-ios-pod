@@ -86,13 +86,23 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             else if (result.confidence >= 0.5) {
                 print("Confidence: \(result.confidence)")
                 print("Front side: \(result.isFrontSide)")
+                print("Front side full: \(String(describing: result.isFrontCardFull))")
                 if (result.texts != nil) {
                     print(result.texts!)
+                }
+                if (result.isFrontCardFull == true) {
+                    // available if isFrontCardFull is true
+                    print(result.croppedImage)
+                    if (result.classificationResult?.error == nil) {
+                        print(result.classificationResult?.mlConfidence)
+                    }
+                    
                 }
             }
             // Handle result here
         }
     }
 }
+
 
 
