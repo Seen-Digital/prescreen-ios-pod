@@ -79,27 +79,25 @@ class ViewController: UIViewController {
 
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        Prescreen.shareInstance.scanIDCard(sampleBuffer: sampleBuffer, cameraPosition: self.currentDevice.position) { result in
-            if result.error != nil {
-                print(result.error!)
+        let result = Prescreen.shareInstance.scanIDCardSync(sampleBuffer: sampleBuffer, cameraPosition: self.currentDevice.position)
+        if result.error != nil {
+            print(result.error!)
+        }
+        else if (result.confidence >= 0.5) {
+            print("Confidence: \(result.confidence)")
+            print("Front side: \(result.isFrontSide)")
+            print("Front side full: \(String(describing: result.isFrontCardFull))")
+            if (result.texts != nil) {
+                print(result.texts!)
             }
-            else if (result.confidence >= 0.5) {
-                print("Confidence: \(result.confidence)")
-                print("Front side: \(result.isFrontSide)")
-                print("Front side full: \(String(describing: result.isFrontCardFull))")
-                if (result.texts != nil) {
-                    print(result.texts!)
+            if (result.isFrontCardFull == true) {
+                // available if isFrontCardFull is true
+                print(result.croppedImage)
+                if (result.classificationResult?.error == nil) {
+                    print(result.classificationResult?.mlConfidence)
                 }
-                if (result.isFrontCardFull == true) {
-                    // available if isFrontCardFull is true
-                    print(result.croppedImage)
-                    if (result.classificationResult?.error == nil) {
-                        print(result.classificationResult?.mlConfidence)
-                    }
-                    
-                }
+                
             }
-            // Handle result here
         }
     }
 }

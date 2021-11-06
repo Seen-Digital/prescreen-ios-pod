@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PrescreeniOS'
-  s.version          = '2.2.0'
+  s.version          = '2.2.2'
   s.summary          = 'PrescreeniOS detect and verify Thai national ID cards.'
   s.description      = <<-DESC
   'PrescreeniOS detect and verify Thai national ID cards. It works for both realtime input (camera feed) or an image.'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'northanapon' => 'nor.thanapon@gmail.com' }
-  s.source           = { :http => 'https://github.com/Seen-Digital/prescreen-ios-pod/releases/download/v2.2.0/PrescreeniOS-2.2.0.zip' }
+  s.source           = { :http => 'https://github.com/Seen-Digital/prescreen-ios-pod/releases/download/v2.2.2/PrescreeniOS-2.2.2.zip' }
   s.swift_versions = '5.0'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
