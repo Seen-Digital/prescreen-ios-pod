@@ -43,18 +43,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
   ```swift
   public struct IDCardResult {
-
-    public var error: PrescreeniOS.Error?
-
+    public var error: Error?
     public var confidence: Double
-
     public var isFrontSide: Bool
-
-    public var texts: [PrescreeniOS.TextResult]?
-
+    public var texts: [TextResult]?
     public var fullImage: UIImage?
-
     public var croppedImage: UIImage?
+    public var isFrontCardFull: Bool?
+    public var classificationResult: IDCardClassificationResult?
   }
   ```
 
@@ -69,6 +65,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
     - `text`: OCR text based on the `type`.
   - `fullImage`: A bitmap image of the full frame used during scanning.
   - `croppedImage`: A bitmap image of the card. This is available if `isFrontSide` is `true`.
+  - `isFrontCardFull`: A boolean flag indicates whether the scan found thr front side and the card is likely to be complete.
+  - `classificationResult`: A result from ML classification.
+    - `mlConfidence`: A float from 0.0 to 1.0 indicating the probability of an ID card.
+    - `error`: A string, usually `nil` if no error.
 
 ### Full Example
 
@@ -144,18 +144,25 @@ class ViewController: UIViewController {
 
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        Prescreen.shareInstance.scanIDCard(sampleBuffer: sampleBuffer, cameraPosition: self.currentDevice.position) { result in
-            if result.error != nil {
-                print(result.error!)
+        let result = Prescreen.shareInstance.scanIDCardSync(sampleBuffer: sampleBuffer, cameraPosition: self.currentDevice.position)
+        if result.error != nil {
+            print(result.error!)
+        }
+        else if (result.confidence >= 0.5) {
+            print("Confidence: \(result.confidence)")
+            print("Front side: \(result.isFrontSide)")
+            print("Front side full: \(String(describing: result.isFrontCardFull))")
+            if (result.texts != nil) {
+                print(result.texts!)
             }
-            else if (result.confidence >= 0.5) {
-                print("Confidence: \(result.confidence)")
-                print("Front side: \(result.isFrontSide)")
-                if (result.texts != nil) {
-                    print(result.texts!)
+            if (result.isFrontCardFull == true) {
+                // available if isFrontCardFull is true
+                print(result.croppedImage)
+                if (result.classificationResult?.error == nil) {
+                    print(result.classificationResult?.mlConfidence)
                 }
+                
             }
-            // Handle result here
         }
     }
 }
