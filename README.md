@@ -164,6 +164,8 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 
             }
         }
+        // throttle the processing 0.4s
+        do { usleep(400000) }
     }
 }
 ```

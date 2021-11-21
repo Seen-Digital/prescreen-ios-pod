@@ -85,7 +85,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - PrescreeniOS (2.2.0):
+  - PrescreeniOS (2.2.2):
     - GoogleMLKit/ImageLabelingCustom (>= 2.3)
     - GoogleMLKit/ObjectDetectionCustom (>= 2.3)
     - GoogleMLKit/TextRecognition (>= 2.3)
@@ -93,7 +93,7 @@ PODS:
   - Protobuf (3.19.1)
 
 DEPENDENCIES:
-  - PrescreeniOS (= 2.2.0)
+  - PrescreeniOS (= 2.2.2)
 
 SPEC REPOS:
   trunk:
@@ -136,10 +136,10 @@ SPEC CHECKSUMS:
   MLKitVision: 53b8f93a864c8d9740f7f09041911f2e64150ec8
   MLKitVisionKit: 01b691332ab14e60b39560bab955932c7303b76f
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PrescreeniOS: 58518783d3c95267c45eb29cfd785b7af21a9ac0
+  PrescreeniOS: fee8b7aa9e75197b0f5aa0d04ba105a93c73d9d5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Protobuf: 3724efa50cb2846d7ccebc8691c574e85fd74471
 
-PODFILE CHECKSUM: dc64935d7df86c317a798f3547fe6d3b44bc3055
+PODFILE CHECKSUM: 57dd9aeaf52dab9c9f3df06fe4c427daffd8520a
 
 COCOAPODS: 1.11.2
